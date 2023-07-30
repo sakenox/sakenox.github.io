@@ -3,14 +3,11 @@ function getCurrentUnixTime() {
     return Math.floor(Date.now() / 1000);
 }
 
-// Function to update the displayed Unix time
-function updateUnixTime() {
+// Function to display the Unix time when the page loads
+function displayUnixTime() {
     const unixTimeElement = document.getElementById("unixTime");
     unixTimeElement.textContent = getCurrentUnixTime();
 }
 
-// Update the Unix time initially
-updateUnixTime();
-
-// Update the Unix time every second
-setInterval(updateUnixTime, 1000);
+// Call the displayUnixTime function when the page loads
+displayUnixTime();
