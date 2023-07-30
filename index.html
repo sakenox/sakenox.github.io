@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Current Unix Time</title>
 </head>
 <body>
+    <h1>Current Unix Time:</h1>
     <p id="unixTime"></p>
 
     <script>
@@ -11,17 +13,24 @@
             return Math.floor(Date.now() / 1000);
         }
 
-        // Function to update the displayed Unix time
-        function updateUnixTime() {
-            const unixTimeElement = document.getElementById("unixTime");
-            unixTimeElement.textContent = getCurrentUnixTime();
+        // Function to check if the page is accessed via curl or other tool
+        function isCurl() {
+            return /curl/i.test(navigator.userAgent);
         }
 
-        // Update the Unix time initially
-        updateUnixTime();
+        // Function to update the displayed content
+        function updateContent() {
+            if (isCurl()) {
+                // If accessed via curl, display only the Unix time
+                document.getElementById("unixTime").textContent = getCurrentUnixTime();
+            } else {
+                // If accessed via a web browser, display the full HTML page
+                document.getElementById("unixTime").textContent = "Please access this page via curl or similar tool to see the Unix time.";
+            }
+        }
 
-        // Update the Unix time every second
-        setInterval(updateUnixTime, 1000);
+        // Update the content initially
+        updateContent();
     </script>
 </body>
 </html>
