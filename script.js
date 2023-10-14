@@ -1,13 +1,6 @@
-// Function to get the current Unix time in seconds
-function getCurrentUnixTime() {
-    return Math.floor(Date.now() / 1000);
-}
+let text = document.getElementById("main_text");
 
-// Function to display the Unix time when the page loads
-function displayUnixTime() {
-    const unixTimeElement = document.getElementById("unixTime");
-    unixTimeElement.textContent = getCurrentUnixTime();
-}
-
-// Call the displayUnixTime function when the page loads
-displayUnixTime();
+window.addEventListener("scroll", () =>{
+    let value = window.scrollY;
+    text.style.marginTop = value * 2.5 + "px";
+});
